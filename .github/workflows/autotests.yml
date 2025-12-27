@@ -2,6 +2,11 @@ name: Autotests
 run-name: Test ${{ github.event.inputs.STAGE }} | ${{ github.event.inputs.MARKER }} | ${{ github.event.inputs.THREADS }} threads
 
 on:
+  push:
+    branches:
+      - main        # или нужная ветка
+    paths:
+      - '.github/workflows/autotests.yml'
   workflow_dispatch:
     inputs:
       ENV:
@@ -40,7 +45,7 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.ENV }}
+    #environment: ${{ github.event.inputs.ENV }}
 
     steps:
       - uses: actions/checkout@v4
@@ -74,12 +79,17 @@ jobs:
         if: always()
         run: |
           docker run --rm -v $(pwd):/workspace mcr.microsoft.com/playwright/python:v1.47.0-noble \
-            sh -c "pip install allure-pytest && cd /workspace && allure generate allure-results -c -o allure-report"
+          bash -lc "apt-get update && apt-get install -y openjdk-17-jre nodejs npm && \
+                export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 && \
+                export PATH=\$JAVA_HOME/bin:\$PATH && \
+                npm install -g allure-commandline --save-dev && \
+                cd /workspace && \
+                allure generate allure-results -c -o allure-report"
 
       # Деплой на GitHub Pages
       - name: Deploy to GitHub Pages
         if: success()
-        uses: JamesIves/github-pages-deploy-action@v2
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages

@@ -26,8 +26,9 @@ WORKDIR /usr/workspace
 RUN apt-get update && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt pytest-xdist
 RUN playwright install --with-deps chromium firefox webkit
+
 
 COPY . .
 
@@ -37,4 +38,4 @@ ENV MARKER=smoke
 ENV THREADS=1
 
 # Запуск тестов с параметрами
-CMD ["/bin/sh", "-c", "pytest tests/ -v -n $$THREADS -m $$MARKER --alluredir=allure-results"]
+CMD ["/bin/sh", "-c", "pytest tests/ -v -n $THREADS ${MARKER:+-m $MARKER} --alluredir=allure-results"]
