@@ -23,11 +23,12 @@ on:
           - firefox
           - webkit
       MARKER:
-        description: 'маркеры тестов'
+        description: 'маркеры тестов (all = все)'
         required: true
-        default: 'smoke'
+        default: 'all'
         type: choice
         options:
+          - all
           - smoke
           - regress
           - uat
