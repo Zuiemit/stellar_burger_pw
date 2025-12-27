@@ -79,7 +79,10 @@ jobs:
         if: always()
         run: |
           docker run --rm -v $(pwd):/workspace mcr.microsoft.com/playwright/python:v1.47.0-noble \
-            sh -c "pip install allure-pytest && cd /workspace && allure generate allure-results -c -o allure-report"
+            sh -c "apt-get update && apt-get install -y nodejs npm && \
+             npm install -g allure-commandline --save-dev && \
+             cd /workspace && \
+             allure generate allure-results -c -o allure-report"
 
       # Деплой на GitHub Pages
       - name: Deploy to GitHub Pages
