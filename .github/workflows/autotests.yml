@@ -45,7 +45,7 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.ENV }}
+    #environment: ${{ github.event.inputs.ENV }}
 
     steps:
       - uses: actions/checkout@v4
