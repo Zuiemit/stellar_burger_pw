@@ -39,4 +39,8 @@ ENV THREADS=1
 
 # Запуск тестов с параметрами
 #CMD ["/bin/sh", "-c", "pytest tests/ -v -n $THREADS ${MARKER:+-m $MARKER} --alluredir=allure-results"]
-CMD ["bash", "-lc", "pytest test --alluredir=allure-results -m \"$MARKER\" -n \"$THREADS\""]
+CMD ["bash", "-lc", "if [ \"$MARKER\" = \"all\" ]; then \
+  pytest test --alluredir=allure-results -n \"$THREADS\"; \
+else \
+  pytest test --alluredir=allure-results -m \"$MARKER\" -n \"$THREADS\"; \
+fi"]
