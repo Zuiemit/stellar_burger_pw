@@ -1,5 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
 "Success login","0","Login","test.api_tests","2025-12-27","passed","2025-12-27","","test_auth","",""
-"UI Test Success build burger","3447","Build burger - UI Test","test.ui_tests","2025-12-27","passed","2025-12-27","","test_ui_build_burger_page","",""
-"Success registration","1","Register user","test.api_tests","2025-12-27","passed","2025-12-27","","test_auth","",""
-"UI Test Success registration","2439","Register user - UI Test","test.ui_tests","2025-12-27","passed","2025-12-27","","test_ui_register","",""
+"Success registration","0","Register user","test.api_tests","2025-12-27","passed","2025-12-27","","test_auth","",""
+"UI Test Success build burger","3366","Build burger - UI Test","test.ui_tests","2025-12-27","passed","2025-12-27","","test_ui_build_burger_page","",""
+"UI Test Success registration","2352","Register user - UI Test","test.ui_tests","2025-12-27","passed","2025-12-27","","test_ui_register","",""
