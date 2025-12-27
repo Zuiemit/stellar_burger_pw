@@ -73,6 +73,7 @@ jobs:
             -e THREADS=$THREADS \
             -v $(pwd)/allure-results:/usr/workspace/allure-results \
             ui-tests:latest
+          ls -R allure-results   # ← проверка, что файлы реально появились
 
       # Генерация Allure отчета
       - name: Generate Allure report
