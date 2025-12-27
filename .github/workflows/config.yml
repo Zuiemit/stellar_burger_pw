@@ -11,7 +11,7 @@ on:
       BROWSER:
         description: 'выберите браузер'
         required: true
-        default: 'chromium'
+        default: 'firefox'
         type: choice
         options:
           - chromium
