@@ -5,7 +5,7 @@ import pytest
 
 @allure.title('Register user - UI Test')
 @allure.description('UI Test Success registration')
-@pytest.mark.register
+@pytest.mark.smoke
 def test_register_ui(register_page, assertions):
     register_page.open_register_page()
     register_page.fill_register_field()

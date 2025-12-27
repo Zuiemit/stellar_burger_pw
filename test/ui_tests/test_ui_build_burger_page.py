@@ -6,7 +6,7 @@ from ui.data.burger_prices import CRATOR_PRICE, SPICY_SAUCE_PRICE
 
 @allure.title('Build burger - UI Test')
 @allure.description('UI Test Success build burger')
-@pytest.mark.register
+@pytest.mark.regress
 def test_build_burger_ui(build_burger_page, assertions):
     expected_total = 0
     build_burger_page.open_burger_page()
